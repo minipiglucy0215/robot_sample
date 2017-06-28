@@ -305,7 +305,7 @@ function receivedMessage(event) {
         break;
 
       case 'button':
-        sendButtonMessage(senderID);
+        //sendButtonMessage(senderID);
         break;
 
       case 'generic':
