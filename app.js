@@ -81,7 +81,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 /*
  * Use your own validation token. Check that the token used in the Webhook 
  * setup is the same token used here.
- *
+ 
  */
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
