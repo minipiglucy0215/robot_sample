@@ -327,7 +327,7 @@ function receivedMessage(event) {
       case 'typing on':
         sendTypingOn(senderID);
         break;        
-
+		    
       case 'typing off':
         sendTypingOff(senderID);
         break;        
