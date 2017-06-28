@@ -394,7 +394,6 @@ function receivedPostback(event) {
   // let them know it was successful
   sendTextMessage(senderID, "Postback called");
 }
-
 /*
  * Message Read Event
  *
