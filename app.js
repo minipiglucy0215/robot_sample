@@ -285,7 +285,7 @@ function receivedMessage(event) {
     // the text we received.
     switch (messageText) {
       case 'image':
-        //sendImageMessage(senderID);
+        sendImageMessage(senderID);
         break;
 
       case 'gif':
@@ -305,7 +305,7 @@ function receivedMessage(event) {
         break;
 
       case 'button':
-        //sendButtonMessage(senderID);
+        sendButtonMessage(senderID);
         break;
 
       case 'generic':
