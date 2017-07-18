@@ -256,7 +256,7 @@ function receivedMessage(event) {
   var messageText = message.text;
   var messageAttachments = message.attachments;
   var quickReply = message.quick_reply;
-    if (messageText=="how are you"){
+   /* if (messageText=="how are you"){
       sendTextMessage(senderID, "I'm fine.");
       return;
     }
@@ -276,7 +276,7 @@ function receivedMessage(event) {
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
-  }
+  }  */
 
   if (messageText) {
 
@@ -445,7 +445,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/rift.png"
+          url: http://140.113.9.78/userfiles/9554031/20090613005324.jpg"
         }
       }
     }
