@@ -262,7 +262,7 @@ function receivedMessage(event) {
     }
   sendTextMessage(senderID, getAnswer(messageText,event));
   return;
-  if (isEcho) {
+ /* if (isEcho) {
     // Just logging message echoes to console
     
     
@@ -276,7 +276,7 @@ function receivedMessage(event) {
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
-  }  
+  }  */
 
   if (messageText) {
 
