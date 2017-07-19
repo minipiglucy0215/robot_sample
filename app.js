@@ -256,12 +256,12 @@ function receivedMessage(event) {
   var messageText = message.text;
   var messageAttachments = message.attachments;
   var quickReply = message.quick_reply;
-    if (messageText=="how are you"){
+ /*   if (messageText=="how are you"){
       sendTextMessage(senderID, "I'm fine.");
       return;
     }
-  //sendTextMessage(senderID, getAnswer(messageText,event));
-  sendImageMessage(senderID);
+  sendTextMessage(senderID, getAnswer(messageText,event));
+ 
   return;
   if (isEcho) {
     // Just logging message echoes to console
@@ -277,7 +277,7 @@ function receivedMessage(event) {
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
-  }
+  }*/
 
   if (messageText) {
 
