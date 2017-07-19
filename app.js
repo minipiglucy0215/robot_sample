@@ -261,7 +261,7 @@ function receivedMessage(event) {
       return;
     }
   //sendTextMessage(senderID, getAnswer(messageText,event));
-   sendTextMessage(senderID);
+   sendImageMessage(senderID);
   return;
   if (isEcho) {
     // Just logging message echoes to console
@@ -447,7 +447,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/rift.png"
+          url: http://140.113.9.78/userfiles/9554031/20090613005324.jpg
         }
       }
     }
