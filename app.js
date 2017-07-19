@@ -261,8 +261,7 @@ function receivedMessage(event) {
       return;
     }
   //sendTextMessage(senderID, getAnswer(messageText,event));
-	
-	
+   sendTextMessage(senderID);
   return;
   if (isEcho) {
     // Just logging message echoes to console
