@@ -447,7 +447,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: http://140.113.9.78/userfiles/9554031/20090613005324.jpg
+          url: "http://140.113.9.78/userfiles/9554031/20090613005324.jpg"
         }
       }
     }
