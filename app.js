@@ -18,12 +18,12 @@ const
   https = require('https'),  
   request = require('request');
 
-require('./lib/db_mongo');
-var mongoose = require('mongoose');
+require('./lib/db_mongo');             
+var mongoose = require('mongoose');       
 var brain=require("brain");
 //var training_data_model = mongoose.model('training_data');
 //var target_data_model = mongoose.model('target_data');
-var device_list_model = mongoose.model('devices');
+var device_list_model = mongoose.model('devices');  
 //You can set the number and size of your hidden layers,
 var net =new brain.NeuralNetwork(
     {
@@ -37,7 +37,7 @@ var net =new brain.NeuralNetwork(
       learningRate: 0.78
     }
   );
-
+ 
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
@@ -81,7 +81,7 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
 /*
  * Use your own validation token. Check that the token used in the Webhook 
  * setup is the same token used here.
- 
+ *
  */
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
@@ -264,6 +264,8 @@ function receivedMessage(event) {
   return;
   if (isEcho) {
     // Just logging message echoes to console
+    
+    
     console.log("Received echo for message %s and app %d with metadata %s", 
       messageId, appId, metadata);
     return;
@@ -274,7 +276,7 @@ function receivedMessage(event) {
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
-  }  
+  }
 
   if (messageText) {
 
@@ -325,7 +327,7 @@ function receivedMessage(event) {
       case 'typing on':
         sendTypingOn(senderID);
         break;        
-		    
+
       case 'typing off':
         sendTypingOff(senderID);
         break;        
@@ -392,6 +394,7 @@ function receivedPostback(event) {
   // let them know it was successful
   sendTextMessage(senderID, "Postback called");
 }
+
 /*
  * Message Read Event
  *
@@ -443,7 +446,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: http://140.113.9.78/userfiles/9554031/20090613005324.jpg"
+          url: SERVER_URL + "/assets/rift.png"
         }
       }
     }
