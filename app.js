@@ -262,10 +262,8 @@ function receivedMessage(event) {
     }
   sendTextMessage(senderID, getAnswer(messageText,event));
   return;
- /* if (isEcho) {
+  if (isEcho) {
     // Just logging message echoes to console
-    
-    
     console.log("Received echo for message %s and app %d with metadata %s", 
       messageId, appId, metadata);
     return;
@@ -276,7 +274,7 @@ function receivedMessage(event) {
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
-  }  */
+  }  
 
   if (messageText) {
 
