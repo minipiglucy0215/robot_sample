@@ -260,8 +260,8 @@ function receivedMessage(event) {
       sendTextMessage(senderID, "I'm fine.");
       return;
     }
-  //sendTextMessage(senderID, getAnswer(messageText,event));
-   sendImageMessage(senderID);
+  sendTextMessage(senderID, getAnswer(messageText,event));
+  
   return;
   if (isEcho) {
     // Just logging message echoes to console
