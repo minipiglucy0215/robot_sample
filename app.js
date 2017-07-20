@@ -618,15 +618,16 @@ function sendButtonMessage(recipientId) {
 
 function sendSmallbuttonMessage(recipientId) {
   var messageData = {
-   "recipient": {
-    "id": "RECIPIENT_ID"
-  },
-  "message": {
-    "attachment": {
-      "type": "template",
-      "payload": {
-        "template_type": "generic",
-        "elements": [
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          text: "This is test text",
+          "elements": [
           {
             "title": "Swipe left/right for more options.",
             "buttons": [
@@ -646,33 +647,10 @@ function sendSmallbuttonMessage(recipientId) {
                 "payload": "button3"
               }
             ]
-          },
-          {
-            "title": "Swipe left/right for more options.",
-            "buttons": [
-              {
-                "type": "postback",
-                "title": "Button 4",
-                "payload": "button4"
-              },
-              {
-                "type": "postback",
-                "title": "Button 5",
-                "payload": "button5"
-              },
-              {
-                "type": "postback",
-                "title": "Button 6",
-                "payload": "button6"
-              }
-            ]
-          }
-        ]
+        }
       }
     }
-  }
-};
-  
+  };  
 
   callSendAPI(messageData);
 }
