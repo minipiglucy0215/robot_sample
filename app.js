@@ -336,9 +336,7 @@ function receivedMessage(event) {
       case 'account linking':
         sendAccountLinking(senderID);
         break;
-      case 'smallbutton':
-        sendSmallbutton(senderID);
-        break;
+     
       default:
         sendTextMessage(senderID, messageText);
     }
