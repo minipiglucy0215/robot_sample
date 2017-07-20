@@ -670,7 +670,7 @@ function sendSmallbuttonMessage(recipientId) {
         ]
       }
     }
-  }
+  
 
   callSendAPI(messageData);
 }
