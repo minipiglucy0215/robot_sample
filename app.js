@@ -336,7 +336,7 @@ function receivedMessage(event) {
       case 'account linking':
         sendAccountLinking(senderID);
         break;
-      case 'Smallbutton':
+      case 'smallbutton':
         sendSmallbutton(senderID);
         break;
       default:
@@ -618,8 +618,8 @@ function sendButtonMessage(recipientId) {
 
 function sendSmallbuttonMessage(recipientId) {
   var messageData = {
-    "recipient": {
-    "id": recipientId
+   "recipient": {
+    "id": "RECIPIENT_ID"
   },
   "message": {
     "attachment": {
@@ -670,6 +670,8 @@ function sendSmallbuttonMessage(recipientId) {
         ]
       }
     }
+  }
+};
   
 
   callSendAPI(messageData);
