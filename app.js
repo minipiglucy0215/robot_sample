@@ -625,28 +625,21 @@ function sendSmallbuttonMessage(recipientId) {
       attachment: {
         type: "template",
         payload: {
-          template_type: "generic",
+          template_type: "button",
           text: "This is test text",
-          "elements": [
-          {
-            "title": "Swipe left/right for more options.",
-            "buttons": [
-              {
-                "type": "postback",
-                "title": "Button 1",
-                "payload": "button1"
-              },
-              {
-                "type": "postback",
-                "title": "Button 2",
-                "payload": "button2"
-              },
-              {
-                "type": "postback",
-                "title": "Button 3",
-                "payload": "button3"
-              }
-            ]
+          buttons:[{
+            type: "web_url",
+            url: "https://www.oculus.com/en-us/rift/",
+            title: "Open Web URL"
+          }, {
+            type: "postback",
+            title: "Trigger Postback",
+            payload: "DEVELOPER_DEFINED_PAYLOAD"
+          }, {
+            type: "phone_number",
+            title: "Call Phone Number",
+            payload: "+16505551234"
+          }]
         }
       }
     }
@@ -654,7 +647,6 @@ function sendSmallbuttonMessage(recipientId) {
 
   callSendAPI(messageData);
 }
-
 /*
  * Send a Structured Message (Generic Message type) using the Send API.
  *
