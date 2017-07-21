@@ -628,6 +628,8 @@ function sendLocationButtonMessage(recipientId) {
     "quick_replies":[
       {
         "content_type":"location",
+		"text":"quickReply",
+		payload:"myLocation"
       }
     ]
   }
