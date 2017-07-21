@@ -623,15 +623,23 @@ function sendLocationButtonMessage(recipientId) {
   "recipient": {
    id: recipientId
   },
+  "buttons":[
+      {
+        "type":"postback",
+        "title":"Bookmark Item",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD"
+      }
+    ]
   "message":{
     "text":"Please share your location:",
     "quick_replies":[
       {
         "content_type":"location",
-		"text":"quickReply",
-		payload:"myLocation"
+		
       }
+	  
     ]
+	
   }
 };
 callSendAPI(messageData);
