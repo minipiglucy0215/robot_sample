@@ -309,8 +309,8 @@ function receivedMessage(event) {
         sendButtonMessage(senderID);
         break;
 	
-      case 'smallbutton':
-        sendSmallButtonMessage(senderID);
+      case 'locationbutton':
+        sendLocationButtonMessage(senderID);
         break;
 
       case 'generic':
@@ -618,60 +618,18 @@ function sendButtonMessage(recipientId) {
   callSendAPI(messageData);
 }
 
-function sendSmallButtonMessage(recipientId) {
+function sendLocationButtonMessage(recipientId) {
   var messageData = {
   "recipient": {
    id: recipientId
   },
-  "message": {
-    "attachment": {
-      "type": "template",
-      "payload": {
-        "template_type": "generic",
-        "elements": [
-          {
-            "title": "Swipe left/right for more options.",
-            "buttons": [
-              {
-                "type": "postback",
-                "title": "Button 1",
-                "payload": "button1"
-              },
-              {
-                "type": "postback",
-                "title": "Button 2",
-                "payload": "button2"
-              },
-              {
-                "type": "postback",
-                "title": "Button 3",
-                "payload": "button3"
-              }
-            ]
-          },
-          {
-            "title": "Swipe left/right for more options.",
-            "buttons": [
-              {
-                "type": "postback",
-                "title": "Button 4",
-                "payload": "button4"
-              },
-              {
-                "type": "postback",
-                "title": "Button 5",
-                "payload": "button5"
-              },
-              {
-                "type": "postback",
-                "title": "Button 6",
-                "payload": "button6"
-              }
-            ]
-          }
-        ]
+  "message":{
+    "text":"Please share your location:",
+    "quick_replies":[
+      {
+        "content_type":"location",
       }
-    }
+    ]
   }
 };
 callSendAPI(messageData);
