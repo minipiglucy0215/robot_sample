@@ -140,7 +140,6 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
   }
 });
-
 /*
  * This path is used for account linking. The account linking call-to-action
  * (sendAccountLinking) is pointed to this URL. 
