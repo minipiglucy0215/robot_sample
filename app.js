@@ -17,13 +17,24 @@ const
   express = require('express'),
   https = require('https'),  
   request = require('request');
+  
+/*// Retrieve
+var MongoClient = require('mongodb').MongoClient;
 
-require('./lib/db_mongo');             
+// Connect to the db
+MongoClient.connect("mongodb://218.164.15.139:27017/db", function(err, db) {
+  if(!err) {
+    console.log("We are connected mongodb");
+  }
+});*/
+
+
+//require('./lib/db_mongo'); **********************************************            
 var mongoose = require('mongoose');       
 var brain=require("brain");
 //var training_data_model = mongoose.model('training_data');
 //var target_data_model = mongoose.model('target_data');
-var device_list_model = mongoose.model('devices');  
+//var device_list_model = mongoose.model('devices');  ***********************
 //You can set the number and size of your hidden layers,
 var net =new brain.NeuralNetwork(
     {
@@ -36,8 +47,8 @@ var net =new brain.NeuralNetwork(
       //   global learning rate, useful when training using streams
       learningRate: 0.78
     }
-  );
- 
+  ); 
+
 
 var app = express();
 app.set('port', process.env.PORT || 5000);
@@ -55,7 +66,7 @@ app.use(express.static('public'));
 // App Secret can be retrieved from the App Dashboard
 const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ? 
   process.env.MESSENGER_APP_SECRET :
-  config.get('appSecret'); 
+  config.get('appSecret');
 
 // Arbitrary value used to validate a webhook
 const VALIDATION_TOKEN = (process.env.MESSENGER_VALIDATION_TOKEN) ?
@@ -140,6 +151,7 @@ app.post('/webhook', function (req, res) {
     res.sendStatus(200);
   }
 });
+
 /*
  * This path is used for account linking. The account linking call-to-action
  * (sendAccountLinking) is pointed to this URL. 
@@ -255,13 +267,13 @@ function receivedMessage(event) {
   var messageText = message.text;
   var messageAttachments = message.attachments;
   var quickReply = message.quick_reply;
- /*   if (messageText=="how are you"){
+   /* if (messageText=="how are you"){
       sendTextMessage(senderID, "I'm fine.");
       return;
     }
-  sendTextMessage(senderID, getAnswer(messageText,event));
- 
-  return;
+  //sendTextMessage(senderID,messageText);   //回傳使用者所打的文字
+  sendTextMessage(senderID, getAnswer(messageText,event));  //進入到answer function
+  return;*/
   if (isEcho) {
     // Just logging message echoes to console
     
@@ -276,7 +288,7 @@ function receivedMessage(event) {
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
-  }*/
+  }
 
   if (messageText) {
 
@@ -307,10 +319,6 @@ function receivedMessage(event) {
       case 'button':
         sendButtonMessage(senderID);
         break;
-	
-      case 'locationbutton':
-        sendLocationButtonMessage(senderID);
-        break;
 
       case 'generic':
         sendGenericMessage(senderID);
@@ -339,7 +347,7 @@ function receivedMessage(event) {
       case 'account linking':
         sendAccountLinking(senderID);
         break;
-     
+
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -450,7 +458,8 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: "http://140.113.9.78/userfiles/9554031/20090613005324.jpg"
+          //url: SERVER_URL + "/assets/rift.png"
+		  url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9LX0tn8C_PW1cXBep05JSmrwXpAfCNjByCfEDiHKbwIufubP5Qg"
         }
       }
     }
@@ -616,29 +625,6 @@ function sendButtonMessage(recipientId) {
 
   callSendAPI(messageData);
 }
-
-function sendLocationButtonMessage(recipientId) {
-  var messageData = {
-  "recipient": {
-   id: recipientId
-  },
-  
-  "message":{
-    "text":"Please share your location:",
-    "quick_replies":[
-      {
-        "content_type":"location",
-		
-		
-      }
-	  
-    ]
-	
-  }
-};
-callSendAPI(messageData);
-}
-
 
 /*
  * Send a Structured Message (Generic Message type) using the Send API.
@@ -990,11 +976,7 @@ function getAnswer(send_text,event){
 		  reply_msg="your condition is "+JSON.stringify(question)+"\n";
 		  reply_msg+=getNNResult(question);
 	    break;
-
-	  case "hello! Mr.Wang, I want to know my grade will be good or not?":
-	    reply_msg='OK! I will ask you some questions, for understand your situation\n';
-	    reply_msg+='It will be good for help me to predict your grade...';
-	    break;
+ 
 	 
 	  case "OK":
 	    reply_msg='how long have you study?\n';
